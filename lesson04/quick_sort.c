@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define max_num 20
+#define max_num 10
 
 void show(int array[]){
     int i;
@@ -23,16 +23,16 @@ void swap(int *x, int *y){
 void quicksort(int array[], int left, int right){
     int origin_l = left;
     int origin_r = right;
-    int pivot = (left + right) / 2;
+    int pivot = array[(left + right) / 2];
     do{
         while(1){
-            if (array[left] >= array[pivot]){
+            if( array[left] >= pivot){
                 break;
             }
             left++;
         }
         while(1){
-            if (array[right] <= array[pivot]){
+            if( array[right] <= pivot){
                 break;
             }
             right--;
@@ -57,6 +57,7 @@ int main(int argc, char *argv[]){
     int array[max_num];
     int left = 0;
     int right = max_num - 1;
+    clock_t start,end;
     srand(time(NULL));
 
     for(i = 0; i < max_num; i++){
@@ -65,11 +66,11 @@ int main(int argc, char *argv[]){
 
     printf("交換前\n");
     show(array);
-
+    start = clock();
     quicksort(array, left, right);
-
+    end = clock();
     printf("交換後\n");
     show(array);
-
+    printf("%.4f秒かかりました\n",(double)(end-start)/CLOCKS_PER_SEC);
     return 0;
 }
