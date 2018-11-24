@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdio.h>
 
 #define INIT 0
 #define PLAYER1 1
@@ -39,7 +38,7 @@ int check_input(int input_num){
 int judge_yoko(int masu[3][3], int turn){
 	int i;
 	for(i = 0; i < 3; i++){
-		if(masu[i][0] == turn && masu[i][1] && masu[i][2] == turn){
+		if(masu[i][0] == turn && masu[i][1] == turn && masu[i][2] == turn){
 			return 1;
 		}
 	}
@@ -49,7 +48,7 @@ int judge_yoko(int masu[3][3], int turn){
 int judge_tate(int masu[3][3], int turn){
 	int i;
 	for(i = 0; i < 3; i++){
-		if(masu[0][i] == turn && masu[1][i] && masu[2][i] == turn){
+		if(masu[0][i] == turn && masu[1][i] == turn && masu[2][i] == turn){
 			return 1;
 		}
 	}

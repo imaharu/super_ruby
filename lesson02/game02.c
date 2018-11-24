@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdio.h>
 
 #define INIT 0
 #define PLAYER1 1
