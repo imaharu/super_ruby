@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void swap(int x, int y){
+int x, y;
+
+void swap(){
 	int temp;
+
     printf("swap x_address: %p\n", &x);
 	temp = x;
 	x = y;
@@ -10,7 +13,6 @@ void swap(int x, int y){
 }
 
 int main(int argc, char *argv[]){
-	int x, y;
 
 	if(argc != 3){
 		printf("標準入力の引数は2つです。\n");
@@ -24,7 +26,7 @@ int main(int argc, char *argv[]){
 	printf("before_y = %d\n", y);
 
     printf("main x_address: %p\n", &x);
-	swap(x, y);
+	swap();
 	
 	printf("after_x = %d\n", x);
 	printf("after_y = %d\n", y);
