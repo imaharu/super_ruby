@@ -1,7 +1,4 @@
 class Ls
-    attr_reader :puts_info
-    #attr_reader :directorys
-    #attr_reader :files
     def initialize(option, current_path)
         @current_path = current_path
         @directorys = []
