@@ -5,14 +5,11 @@ class BrainF_ck
     @c_position = 0
     @code = code
     @jump_position = analyze_jump(@code)
-    puts @jump_position
-    exit
   end
 
   def exec
     chars_code = @code.chars ## 入力を一文字ずつに区切る
     while @pc < chars_code.length
-      puts chars_code[@pc]
       case chars_code[@pc]
       when "+"
         inc
@@ -71,30 +68,31 @@ class BrainF_ck
     if @tape[@c_position] != 0
       @pc = @jump_position[@pc]
     end
-    #exit
   end
 
   def analyze_jump(code)
+    stack = []
     chars_code = code.chars ## 入力を一文字ずつに区切る
     jump_p = {}
-    left = 0
-    right = chars_code.length - 1
-    loop do 
-      if left > right
-        break
-      end
-      if code[left] == "["
+    chars_code.each_with_index do |word, current|
+      if word == "["
+        left = current
+        right = current
         loop do
+          if code[right] == "["
+            stack.push(1)
+          end
           if code[right] == "]"
-            jump_p[left] = right
-            jump_p[right] = left
-            right -= 1
+            stack.pop()
+          end
+          if stack.length == 0
             break
           end
-          right -= 1
+          right += 1
         end
+        jump_p[left] = right
+        jump_p[right] = left
       end
-      left += 1
     end
     jump_p
   end
