@@ -1,5 +1,5 @@
 	.section	__TEXT,__text,regular,pure_instructions
-	.macosx_version_min 10, 13
+	.build_version macos, 10, 14
 	.globl	_main                   ## -- Begin function main
 	.p2align	4, 0x90
 _main:                                  ## @main
@@ -25,7 +25,7 @@ _main:                                  ## @main
                                         ## -- End function
 	.section	__TEXT,__cstring,cstring_literals
 L_.str:                                 ## @.str
-	.asciz	"HelloWorld\n"
+	.asciz	"Hello World\n"
 
 
 .subsections_via_symbols
